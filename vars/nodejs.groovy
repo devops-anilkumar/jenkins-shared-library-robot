@@ -10,9 +10,9 @@ def lintchecks() {
     '''
 }
 // call is the default function which will be called when you call the filename
-def call(COMPONENT) {
+def call() {
     pipeline
-         agentany
+         agent any
          stages{
             stage ('lintchecks') {
                 steps {
