@@ -1,12 +1,12 @@
 def lintchecks(COMPONENT) {
     sh '''
-                   echo lint checks for $(component) 
+                   echo lint checks for ${COMPONENT}
                    echo installing jslint
                   # npm install jslint
                   # ls -ltr node-modules/jslint/bin/
                   # /home/centos/jslint/bin/jslint.js server.js
-                  echo performing lint checks
-                  echo performing lint checks completed
+                  echo performing lint checks for ${COMPONENT}
+                  echo performing lint checks completed ${COMPONENT}
 
     '''
 }
