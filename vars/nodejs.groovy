@@ -18,7 +18,7 @@ def call(COMPONENT) {
             stage ('lintchecks') {
                 steps {
                     script {
-                       nodejs.lintchecks(COMPONENT)
+                       nodejs.lintchecks()
                     }
                 }
             }
