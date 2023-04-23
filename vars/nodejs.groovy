@@ -1,4 +1,4 @@
-def lintchecks(COMPONENT) {
+def lintchecks() {
     sh '''
                    echo lint checks for ${COMPONENT}
                    echo installing jslint
