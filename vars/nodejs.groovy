@@ -7,7 +7,6 @@ def lintchecks() {
                   # /home/centos/jslint/bin/jslint.js server.js
                   echo performing lint checks for ${COMPONENT}
                   echo performing lint checks completed ${COMPONENT}
-
     '''
 }
 // call is the default function which will be called when you call the filename
