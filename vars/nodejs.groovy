@@ -14,10 +14,10 @@ def call() {
     pipeline
          agent any
          stages{
-            stage ('lintchecks') {
+            stage ('lint checks') {
                 steps {
                     script {
-                       nodejs.lintchecks()
+                        lintchecks()
                     }
                 }
             }
