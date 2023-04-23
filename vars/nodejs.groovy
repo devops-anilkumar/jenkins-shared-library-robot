@@ -1,19 +1,19 @@
 def lintchecks() {
     sh '''
-                   echo lint checks for ${COMPONENT}
-                   echo installing jslint
-                  # npm install jslint
-                  # ls -ltr node-modules/jslint/bin/
-                  # /home/centos/jslint/bin/jslint.js server.js
-                  echo performing lint checks for ${COMPONENT}
-                  echo performing lint checks completed ${COMPONENT}
+            echo lint checks for ${COMPONENT}
+            echo installing jslint
+            # npm install jslint
+            # ls -ltr node-modules/jslint/bin/
+            # /home/centos/jslint/bin/jslint.js server.js
+            echo performing lint checks for ${COMPONENT}
+            echo performing lint checks completed ${COMPONENT}
     '''
 }
 // call is the default function which will be called when you call the filename
 def call() {
-    pipeline
-         agent any
-         stages{
+    pipeline {
+        agent any
+        stages{
             stage ('lint checks') {
                 steps {
                     script {
@@ -21,7 +21,8 @@ def call() {
                     }
                 }
             }
-         }
+        }
+    }
 }
 
 // @Library('roboshop-shared-library') _
