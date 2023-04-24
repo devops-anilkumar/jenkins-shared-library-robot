@@ -28,7 +28,7 @@ def call() {
                     }
                 }
             }
-            stage ('lint checks') {
+            stage ('sonar checks') {
                 steps {
                     script {
                         sonarchecks()
