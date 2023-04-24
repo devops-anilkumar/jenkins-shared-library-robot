@@ -10,13 +10,13 @@ def lintchecks() {
     '''
 }
 
-def sonarchecks() {
-    sh '''
-      sonar-scanner -Dsonar.host.url=http://172.31.0.15:9000 -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_CREDENTIALS_USR} -Dsonar.password=${SONAR_CREDENTIALS_PSW}
-      curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > quality-gate.sh
-      bash -x quality-gate.sh ${SONAR_CREDENTIALS_USR} ${SONAR_CREDENTIALS_PSW} ${SONAR_URL} ${COMPONENT}
-     '''
-}
+// def sonarchecks() {
+//     sh '''
+//       sonar-scanner -Dsonar.host.url=http://172.31.0.15:9000 -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_CREDENTIALS_USR} -Dsonar.password=${SONAR_CREDENTIALS_PSW}
+//       curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > quality-gate.sh
+//       bash -x quality-gate.sh ${SONAR_CREDENTIALS_USR} ${SONAR_CREDENTIALS_PSW} ${SONAR_URL} ${COMPONENT}
+//      '''
+// }
 // call is the default function which will be called when you call the filename
 def call() {
     pipeline {
@@ -37,7 +37,7 @@ def call() {
             stage ('sonar checks') {
                 steps {
                     script {
-                        sonarchecks()
+                       common.sonarchecks()
                     }
                 }
             }

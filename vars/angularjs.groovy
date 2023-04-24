@@ -16,6 +16,13 @@ def call() {
                         lintchecks()
                     }
                 }
+            } 
+                stage ('sonar checks') {
+                steps {
+                    script {
+                       common.sonarchecks()
+                    }
+                }
             }
         }
     }
