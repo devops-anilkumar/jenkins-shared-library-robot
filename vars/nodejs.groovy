@@ -23,7 +23,9 @@ def call() {
         agent any
         environment { 
         SONAR_CREDENTIALS = credentials('SONAR')
+        NEXUS = credentials('NEXUS')
         SONAR_URL = "172.31.0.15"
+        NEXUS_URL = "44.203.61.5"
         }
 
         stages{
@@ -42,11 +44,7 @@ def call() {
                     }
                 }
             }
-            stage ('performing npm install') {
-            steps {
-                sh "echo hai"
-            }
-            }
+
                      stage ('test cases'){
          parallel{
             stage ('unit testing'){
@@ -71,12 +69,15 @@ def call() {
        stage('prepare the artifacts') {
        when { expression { env.TAG_NAME != null} }
            steps {
+               sh "npm install"
                sh "echo preparing the artifacts"
+               sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
           }
        }
        stage('publish the artifacts') {
        when { expression { env.TAG_NAME != null} }
            steps {
+           sh "curl -v -u NEXUS_USR:NEXUS_PSW --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
                sh "echo publishing the artifacts"
           }
        }
