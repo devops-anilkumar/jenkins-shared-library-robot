@@ -66,14 +66,15 @@ def call() {
              }
           }
        }
-    //     stage('checking the artifacts version') {
-    //    when { expression { env.TAG_NAME != null} }
-    //        steps {
-    //           script{
-    //             env.UPLOAD_STATUS=sh(returnStdout: true, script: command)
-    //           }
-    //       }
-    //    }
+        stage('checking the artifacts version') {
+       when { expression { env.TAG_NAME != null} }
+           steps {
+              script{
+                env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip')
+                print UPLOAD_STATUS
+              }
+          }
+       }
        stage('prepare the artifacts') {
        when { expression { env.TAG_NAME != null} }
            steps {
