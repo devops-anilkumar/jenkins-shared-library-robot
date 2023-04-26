@@ -78,7 +78,6 @@ def call() {
        when { expression { env.TAG_NAME != null} }
            steps {
            sh "curl -v -u NEXUS_USR:NEXUS_PSW --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
-               sh "echo publishing the artifacts"
           }
        }
       }
