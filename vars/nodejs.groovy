@@ -49,13 +49,13 @@ def call() {
          parallel{
             stage ('unit testing'){
                steps{
-                  //sh "npm test"
+                  sh "npm test"
                   sh "echo perfoming unit testing"
                }
             }
             stage ('integrated testing'){
                steps{
-                  // sh "npm verify"
+                  sh "npm verify"
                   sh "echo performing integrated testing"
                }
             }
