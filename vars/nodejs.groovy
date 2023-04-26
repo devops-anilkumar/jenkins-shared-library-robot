@@ -23,7 +23,7 @@ def call() {
         agent any
         environment { 
         SONAR_CREDENTIALS = credentials('SONAR')
-        NEXUS = credentials('NEXUS')
+       // NEXUS = credentials('NEXUS')
         SONAR_URL = "172.31.0.15"
         NEXUS_URL = "44.203.61.5"
         }
@@ -66,6 +66,14 @@ def call() {
              }
           }
        }
+    //     stage('checking the artifacts version') {
+    //    when { expression { env.TAG_NAME != null} }
+    //        steps {
+    //           script{
+    //             env.UPLOAD_STATUS=sh(returnStdout: true, script: command)
+    //           }
+    //       }
+    //    }
        stage('prepare the artifacts') {
        when { expression { env.TAG_NAME != null} }
            steps {
@@ -77,7 +85,7 @@ def call() {
        stage('publish the artifacts') {
        when { expression { env.TAG_NAME != null} }
            steps {
-           sh "curl -f -v -u NEXUS_CREDENTIALS_USR:NEXUS_CREDENTIALS_PSW --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+           sh "curl -f -v -u admin:password --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
           }
        }
       }
