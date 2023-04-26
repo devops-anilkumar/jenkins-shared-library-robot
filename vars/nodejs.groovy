@@ -68,6 +68,18 @@ def call() {
              }
           }
        }
+       stage('prepare the artifacts') {
+       when { expression { env.TAG_NAME != null} }
+           steps {
+               sh "echo preparing the artifacts"
+          }
+       }
+       stage('publish the artifacts') {
+       when { expression { env.TAG_NAME != null} }
+           steps {
+               sh "echo publishing the artifacts"
+          }
+       }
       }
     }
 }
