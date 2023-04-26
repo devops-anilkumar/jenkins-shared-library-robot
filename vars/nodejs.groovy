@@ -47,9 +47,53 @@ def call() {
                 sh "echo hai"
             }
             }
-        }
+                     stage ('test cases'){
+         parallel{
+            stage ('unit testing'){
+               steps{
+                  //sh "npm test"
+                  sh "echo perfoming unit testing"
+               }
+            }
+            stage ('integrated testing'){
+               steps{
+                  // sh "npm verify"
+                  sh "echo performing integrated testing"
+               }
+            }
+            stage ('functional testing'){
+               steps{
+                 sh "echo performing functional testing"
+                 }
+             }
+          }
+       }
+      }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @Library('roboshop-shared-library') _
 // pipeline{

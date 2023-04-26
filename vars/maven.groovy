@@ -31,6 +31,27 @@ def call() {
                     }
                 }
             }
-        }
-    }
+         stage ('test cases'){
+         parallel{
+            stage ('unit testing'){
+               steps{
+                  //sh "mvn test"
+                  sh "echo perfoming unit testing"
+               }
+            }
+            stage ('integrated testing'){
+               steps{
+                  // sh "mvn verify"
+                  sh "echo performing integrated testing"
+               }
+            }
+            stage ('functional testing'){
+               steps{
+                 sh "echo performing functional testing"
+                 }
+             }
+          }
+       }
+     } 
+  }
 }
