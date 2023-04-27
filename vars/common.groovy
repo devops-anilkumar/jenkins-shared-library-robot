@@ -46,7 +46,7 @@ def testcases() {
 def lintchecks() {
        stage('Lint Checks') {
            if(env.APP_TYPE == "nodejs") {
-           sh '''
+      sh '''
             echo lint checks for ${COMPONENT}
             echo installing jslint
             # npm install jslint
