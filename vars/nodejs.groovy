@@ -22,10 +22,10 @@ def call() {
     pipeline {
         agent any
         environment { 
-        //SONAR_CREDENTIALS = credentials('SONAR')
+        SONAR_CREDENTIALS = credentials('SONAR')
         NEXUS = credentials('NEXUS')
-        //SONAR_URL = "172.31.0.15"
-        NEXUS_URL = "44.203.61.5"
+        SONAR_URL = "172.31.0.15"
+        NEXUS_URL = "172.31.6.37"
         }
 
         stages{
