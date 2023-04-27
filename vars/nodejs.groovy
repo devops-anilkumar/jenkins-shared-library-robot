@@ -23,7 +23,7 @@ def call() {
         agent any
         environment { 
         SONAR_CREDENTIALS = credentials('SONAR')
-        NEXUS = credentials('NEXUS')
+       // NEXUS = credentials('NEXUS')
         SONAR_URL = "172.31.0.15"
         NEXUS_URL = "44.203.61.5"
         }
