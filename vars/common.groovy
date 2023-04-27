@@ -104,17 +104,22 @@ def artifacts() {
          }
          else if(env.APP_TYPE == "maven") {
          sh '''
-            echo " YET TO FILL"
+             mvn clean package
+             mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+             zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
           '''
          }
          else if(env.APP_TYPE == "python") {
           sh '''
-          echo "YET TO FILL"
+            zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
           '''
          }
        else {
           sh '''
-            echo " YET TO FILL "
+            echo "Frontend component is Excuting"
+            cd static/
+            zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+            
             '''
        }
      }
