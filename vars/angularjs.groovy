@@ -2,7 +2,7 @@
 def call() {
       node {
           git branch: 'main', url: "https://github.com/devops-anilkumar/${COMPONENT}.git"
-          env.APPTYPE ="angularjs"
+          env.APP_TYPE ="angularjs"
           common.lintchecks()
           env.ARGS="-Dsonar.sources=."
           common.sonarchecks()
