@@ -107,6 +107,11 @@ def artifacts() {
             echo " YET TO FILL"
           '''
          }
+         else if(env.APP_TYPE == "python") {
+          sh '''
+          echo "YET TO FILL"
+          '''
+         }
          else {
           sh '''
           echo "YET TO FILL"
