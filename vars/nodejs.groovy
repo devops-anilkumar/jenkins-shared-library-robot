@@ -89,9 +89,9 @@ def call() {
        when { expression { env.TAG_NAME != null} }
            steps {
               sh "curl -f -v -u admin:password --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
-          }
+            }
+         }
        }
-      }
     }
 }
 
