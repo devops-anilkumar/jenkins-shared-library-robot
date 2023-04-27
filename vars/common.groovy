@@ -85,33 +85,34 @@ def lintchecks() {
        }
 }
 
-// // i only want to run check the release, create the artifact and push the artifact to nexus ,only if the arti  fact doesn't exist
-// def artifacts() {
-//      stage('check the release') {
-//      env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true')
-//      print UPLOAD_STATUS        
+// i only want to run check the release, create the artifact and push the artifact to nexus ,only if the arti  fact doesn't exist
+def artifacts() {
+     stage('check the release') {
+     env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true')
+     print UPLOAD_STATUS        
    
-//      }
-//      if(env.UPLOAD_STATUS == "") {
+     }
+     if(env.UPLOAD_STATUS == "") {
 
-//          stage('preparing the artifact') {
-//         if(env.APP_TYPE == "nodejs") {
-//           sh '''
-//                sh "npm install"
-//                sh "echo preparing the artifacts"
-//                sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
-//           '''
-//          }
-//          else if(env.APP_TYPE == "maven") {
-//          sh '''
-//             echo " YET TO FILL"
-//           '''
-//          }
-//          else {
-//           sh '''
-//           echo "YET TO FILL"
-//           '''
-//          }
+         stage('preparing the artifact') {
+        if(env.APP_TYPE == "nodejs") {
+          sh '''
+               sh "npm install"
+               sh "echo preparing the artifacts"
+               sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+          '''
+         }
+         else if(env.APP_TYPE == "maven") {
+         sh '''
+            echo " YET TO FILL"
+          '''
+         }
+         else {
+          sh '''
+          echo "YET TO FILL"
+          '''
+         }
 
-//      }
-// }
+     }
+   }
+}
