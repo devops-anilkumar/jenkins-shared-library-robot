@@ -112,12 +112,11 @@ def artifacts() {
           echo "YET TO FILL"
           '''
          }
-     //     else {
-     //      sh '''
-     //      echo "YET TO FILL"
-     //      '''
-     //     }
-
+       else {
+          sh '''
+            echo " YET TO FILL "
+            '''
+       }
      }
    }
 }
