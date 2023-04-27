@@ -102,21 +102,21 @@ def artifacts() {
                 zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
           '''
          }
-         else if(env.APP_TYPE == "maven") {
-         sh '''
-            echo " YET TO FILL"
-          '''
-         }
-         else if(env.APP_TYPE == "python") {
-          sh '''
-          echo "YET TO FILL"
-          '''
-         }
-       else {
-          sh '''
-            echo " YET TO FILL "
-            '''
-       }
+     //     else if(env.APP_TYPE == "maven") {
+     //     sh '''
+     //        echo " YET TO FILL"
+     //      '''
+     //     }
+     //     else if(env.APP_TYPE == "python") {
+     //      sh '''
+     //      echo "YET TO FILL"
+     //      '''
+     //     }
+     //   else {
+     //      sh '''
+     //        echo " YET TO FILL "
+     //        '''
+     //   }
      }
      stage('uploading the artifact') {
        withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
