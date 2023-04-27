@@ -93,13 +93,13 @@ def artifacts() {
    
      }
      if(env.UPLOAD_STATUS == "") {
-
-         stage('preparing the artifact') {
+       
+      stage('preparing the artifact') {
         if(env.APP_TYPE == "nodejs") {
           sh '''
-               sh "npm install"
-               sh "echo preparing the artifacts"
-               sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+                npm install
+                echo preparing the artifacts
+                zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
           '''
          }
          else if(env.APP_TYPE == "maven") {
