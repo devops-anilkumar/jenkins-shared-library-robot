@@ -77,7 +77,7 @@ def call() {
     //    }
        stage('prepare the artifacts') {
        when { expression { env.TAG_NAME != null}
-              expression { env.UPLOAD_STATUS == "" }
+             // expression { env.UPLOAD_STATUS == "" }
         }
            steps {
                sh "npm install"
