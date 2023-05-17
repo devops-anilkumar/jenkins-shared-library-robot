@@ -1,4 +1,7 @@
 def call() {
+    if(!env.TFDIR) {
+        env.TFDIR = "./"
+    }
   properties([
         parameters([
             choice(choices: 'dev\nprod', description: "choose the environment", name: "ENV"),
